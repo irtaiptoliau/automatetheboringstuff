@@ -1,0 +1,27 @@
+#Chapter 6
+#Coin Flip Streaks
+#Write a program to find out how often a streak of six heads or a streak of six tails comes up in a randomly generated list of 100 heads and tails (detailed description here). 
+
+#my solution below
+
+import random
+chance = []
+for d in range(10000):
+    cat =[]
+    for i in range(100):
+        x = random.randint(0,1)
+        if x == 0:
+            cat.append ('T')
+        else:
+            cat.append ('H')
+    m = 0
+    for y in range(95):
+        if cat[y] == cat[y+1] and cat[y] == cat[y+2] and cat[y] == cat[y+3] and cat[y] == cat[y+4] and cat[y] == cat[y+5]:
+            m = m+1
+        else:
+            continue
+    chance.append(m)
+x = sum(chance)
+print(x)
+y = x / 10000
+print('The possibility is ' + str(y) + '%')
