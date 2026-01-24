@@ -1,0 +1,19 @@
+#Chapter 9
+#Regex Version of the strip() Method
+#Write a function that takes a string and does the same thing as the strip() string method. If no other arguments are passed other than the string to strip, 
+#then the function should remove whitespace characters from the beginning and end of the string. 
+#Otherwise, the function should remove the characters specified in the second argument to the function.
+
+#my solution below
+
+import re
+def strip(a, b): #a is a string, b is a character to remove 
+    if b == ' ':
+        return''.join(re.findall(r'\S', a))
+    else:
+        pattern = r'[^' + b + ']+'
+        return ''.join(re.findall(pattern, a))
+
+a = input('Write a string here\n')
+b = input('Write a character to remove\n')
+print(strip(a, b))
