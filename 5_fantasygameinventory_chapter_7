@@ -1,0 +1,23 @@
+#Chapter 6
+#Fantasy Game Inventory
+#Write a function named display_inventory() that would take any possible “inventory” and display it like the following:
+#Inventory:
+#12 arrow
+#42 gold coin
+#1 rope
+#6 torch
+#1 dagger
+#Total number of items: 62
+
+#my solution below
+
+inventory = {'rope':1, 'torch': 6, 'gold coin': 42, 'dagger': 1, 'arrow': 12}
+m = 0
+for x in inventory.values():
+    m  = m + x
+print ('Inventory:')
+for x,y in inventory.items():
+    print (str(y) + ' ' +str(x))
+print ('Total number of items: ' + str(m))
+m = list(inventory)
+print (m)
