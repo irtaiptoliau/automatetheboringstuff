@@ -1,0 +1,15 @@
+#Chapter 6
+#Commacode
+#Write a function that takes a list value as an argument and returns a string with all the items separated by a comma and a space, with and inserted before the last item. 
+
+#my solution below
+
+#words = ['apples', 'bananas', 'tofu', 'cats', 'dogs', 'bats', 'bugs'] 
+#words is a list
+
+def commacode(words):
+  for i in range(len(words)):
+    if i < (len(words)-2):
+      print (words[i] + ', ', end = '')
+    if i == (len(words)-2):
+      print (words[i] + ' and '+ words[i+1], end = '')
