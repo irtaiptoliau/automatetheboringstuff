@@ -1,0 +1,24 @@
+#Chapter 4
+#Task
+#The Collatz Sequence
+#Write a function named collatz() that has one parameter named number. If number is even, then collatz() should print number // 2 and return this value. If number is odd, then collatz() should print and return 3 * number + 1.
+#Then, write a program that lets the user enter an integer and that keeps calling collatz() on that number until the function returns the value 1. 
+
+#my solution below
+
+def collatz(a):
+    if a % 2 == 0:
+        return a/2
+    else:
+        return 3 * a + 1        
+  
+x = input('Enter number\n')
+while (x.isdigit() == False) or (x == '0') or (('.' in x) or (',' in x)):
+    x = input('Please enter valid number >0\n')
+
+x = int(x)
+while x > 0:
+    x = int(collatz(x))
+    print(x)
+    if x == 1:
+        break
