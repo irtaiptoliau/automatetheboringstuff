@@ -1,0 +1,25 @@
+#Chapter 8
+#Table Printer
+#Write a function named printTable() that takes a list of lists of strings and displays it in a well-organized table with each column right-justified. 
+
+#my solution below
+
+from tabulate import tabulate
+table = [['apples', 'oranges', 'cherries', 'banana'],['Alice', 'Bob', 'Carol', 'David'],['dogs', 'cats', 'moose', 'goose']]
+def table2():
+    x = 0
+    k = []
+    for x in range(4):
+        for a in range(3):
+            k.append(table[a][x])
+        x = x + 1
+    k = [k[0:3],k[3:6],k[6:]]
+    d = tabulate (
+        k,
+        headers=['Fruit', 'Name', 'Animal'],
+        tablefmt='grid',
+        stralign='right',
+        maxcolwidths=30
+        )
+    print(d)
+table2()
