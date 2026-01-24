@@ -9,6 +9,20 @@
 import re
 def strip(a, b): #a is a string, b is a character to remove 
     if b == ' ':
+        pattern = r'^\s*|\s*$'
+    else:
+        pattern = r'^' + b + '*' + '|' + b + '*$'
+    return re.sub(pattern, '', a)
+a = input('Write a string here\n')
+b = input('Write a character to remove\n')
+print(strip(a, b))
+
+#another interpretation of the exercise where all the chosen characters removed from the string (not only from the beginning or end)
+#similar to replace() method and not strip()
+
+import re
+def func(a, b): #a is a string, b is a character to remove 
+    if b == ' ':
         return''.join(re.findall(r'\S', a))
     else:
         pattern = r'[^' + b + ']+'
@@ -16,4 +30,6 @@ def strip(a, b): #a is a string, b is a character to remove
 
 a = input('Write a string here\n')
 b = input('Write a character to remove\n')
-print(strip(a, b))
+print(func(a, b))
+
+
