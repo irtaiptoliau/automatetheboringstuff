@@ -1,0 +1,20 @@
+#Chapter 10
+#Mad Libs
+#Create a Mad Libs program that reads in text files and lets the user some words in the text file. 
+
+#my solution below
+
+print('Enter an adjective:')
+a = input()
+print('Enter a noun:')
+b = input()
+print('Enter a verb:')
+c = input()
+print('Enter a noun:')
+d = input()
+
+file = open ('file.txt', 'w')
+file.write('The ' + a + ' panda walked to the ' + b + ' and then ' + c + '. A nearby ' + d + ' was unaffected by these events')
+file  = open ('file.txt', 'r')
+print(file.readlines())
+file.close()
