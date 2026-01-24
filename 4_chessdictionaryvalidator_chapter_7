@@ -1,0 +1,38 @@
+#Chapter 7
+#Chess Dictionary Validator
+#Write a function named isValidChessBoard() that takes a dictionary argument and returns True or False depending on whether the board is valid.
+#A valid board will have exactly one black king and exactly one white king. 
+#Each player can have at most 16 pieces, of which only eight can be pawns, and all pieces must be on a valid square from '1a' to '8h'. 
+#That is, a piece can’t be on square '9z'. The piece names should begin with either a 'w' or a 'b' to represent white or black, followed by 
+#'pawn', 'knight', 'bishop', 'rook', 'queen', or 'king'. This function should detect when a bug has resulted in an improper chessboard.  
+
+#my solution below
+
+chess = {}
+print ('Your move! Please type the board placement')
+x = input()
+str(x)
+if x == ' ':
+    print ('Invalid')
+else:
+    if len(x)>=3:
+        print ('Invalid')
+    else:
+        if x[0] == 'a' or x[0] == 'b' or x[0] =='c' or x[0] == 'd' or x[0] == 'e' or x[0]=='f' or x[0] == 'g' or x[0] == 'h':
+            y  = int(x[1])
+            if y >= 1 and y <9:
+                print('OK')
+            else:
+                print('Invalid')
+        else:
+            print ('Invalid')
+print ('Your move! Please type the name')
+m = input()
+str(m)
+if m[0] == 'b' or m[0] == 'w':
+    if m[1:] == 'king' or m[1:] == 'queen' or m[1:] == 'bishop' or m[1:] == 'knight' or m[1:] == 'rook' or m[1:] == 'pawn':
+        print('OK')
+    else:
+        print('Invalid')
+else:
+    print ('Invalid')
