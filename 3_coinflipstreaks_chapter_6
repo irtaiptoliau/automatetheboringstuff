@@ -1,6 +1,6 @@
 #Chapter 6
 #Coin Flip Streaks
-#Write a program to find out how often a streak of six heads or a streak of six tails comes up in a randomly generated list of 100 heads and tails (detailed description [here](https://automatetheboringstuff.com/3e/chapter6.html)). 
+#Write a program to find out how often a streak of six heads or a streak of six tails comes up in a randomly generated list of 100 heads and tails (detailed description here: https://automatetheboringstuff.com/3e/chapter6.html). 
 
 #my solution below
 
