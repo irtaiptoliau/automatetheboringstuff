@@ -9,15 +9,40 @@
 #1 dagger
 #Total number of items: 62
 
+#Additional task 
+#List-to-Dictionary Loot Conversion
+#Write a function named add_to_inventory(inventory, added_items). The inventory parameter is a dictionary representing the player’s inventory (as in the previous project) 
+#and the added_items parameter is a list, like dragon_loot. The add_to_inventory() function should return a dictionary that represents the player’s updated inventory. 
+#Note that the added_items list can contain multiples of the same item. 
+
 #my solution below
 
+from collections import Counter
+
 inventory = {'rope':1, 'torch': 6, 'gold coin': 42, 'dagger': 1, 'arrow': 12}
-m = 0
-for x in inventory.values():
-    m  = m + x
-print ('Inventory:')
-for x,y in inventory.items():
-    print (str(y) + ' ' +str(x))
-print ('Total number of items: ' + str(m))
-m = list(inventory)
-print (m)
+print('Inventory #1')
+print(inventory, '\n')
+
+def inv(inventory):
+    m = 0
+    for x in inventory.values():
+        m  = m + x
+    print ('Inventory:')
+    for x,y in inventory.items():
+        print (str(y) + ' ' +str(x) + '(s)')
+    print ('Total number of items: ' + str(m))
+
+inv(inventory)
+
+dragon_loot = ['gold coin', 'dagger', 'gold coin', 'gold coin', 'ruby']
+list_dl = dict(Counter(dragon_loot)) #list to dict
+
+print('\nAddition to the inventory #1')
+print(list_dl, '\n')
+
+inv_upd = dict(Counter(inventory) + Counter(list_dl)) #updating the initial list
+
+print('Updated inventory #1')
+print(inv_upd, '\n')
+
+inv(inv_upd)
