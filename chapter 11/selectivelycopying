@@ -1,0 +1,22 @@
+#Chapter 11
+#Selectively Copying
+#Write a program that walks through a folder tree and searches for files with a certain file extension (such as .pdf or .jpg). Copy these files from their current location to a new folder.
+
+#my solution below
+
+import os, re, shutil, glob
+from pathlib import Path
+path = 'your/path/here'
+l = input("Please write the file extention (without the dot), example: rtf/txt/doc:\n")
+k = any(Path(path).glob("*." + l))
+if k:
+    foldername = input('The name for the new folder:\n')
+    m = os.path.join(path,foldername)
+    newfolder = os.mkdir(m)
+    for filename in os.listdir(path):
+        source = os.path.join(path, filename)
+        if os.path.isfile(source) and source.endswith(l):
+            x = shutil.copy(source, m)
+    print('Done')
+else:
+    print(f"There are no {l} files in the folder {path}")
