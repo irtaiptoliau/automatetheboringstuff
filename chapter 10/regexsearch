@@ -1,0 +1,23 @@
+#Chapter 10
+#Regex Search
+#Write a program that opens all .txt files in a folder and searches for any line that matches a user-supplied regular expression, then prints the results to the screen.
+
+#my solution below
+
+import os, re
+from pathlib import Path
+
+print('Regex:')
+m = input()
+
+k = '/Users/kate/Documents/Python/songs'
+for filename in os.listdir(k):
+    y = os.path.join(k, filename)
+
+    if os.path.isfile(y) and y.endswith('.txt'): 
+        with open(y, "r") as f:
+            for line_number, line in enumerate(f, start=1):
+                j = re.findall(m,line)
+                if j:
+                    print(f"Expression '{m}' found on line {line_number} in file {filename}")
+                  
