@@ -10,7 +10,7 @@ from pathlib import Path
 print('Regex:')
 m = input()
 
-k = '/Users/kate/Documents/Python/songs'
+k = 'your/path/here'
 for filename in os.listdir(k):
     y = os.path.join(k, filename)
 
