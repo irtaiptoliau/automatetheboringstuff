@@ -1,0 +1,18 @@
+#Chapter 14
+#Blank Row Inserter
+#Write a function that takes a list value as an argument and returns a string with all the items separated by a comma and a space, with and inserted before the last item. 
+
+#my solution below
+
+import openpyxl
+from openpyxl.utils import get_column_letter
+
+def moving(m, n):
+    wb = openpyxl.load_workbook('path_to_a_file.xlsx')
+    sheet = wb.active
+    f = get_column_letter((sheet.max_column))
+    k = "A" + str(m) + ":" + f + str(sheet.max_row)
+    sheet.move_range(k, rows = n)
+    wb.save('file.xlsx')
+
+moving(10, 20)
