@@ -1,0 +1,17 @@
+#Chapter 6
+#Renumbering Files
+#Write a program that finds all files with a given prefix in a single folder and locates any gaps in the numbering. 
+
+#my solution below
+
+import os, re
+folder_path = 'path_to_folder'
+for root, dirs, files in os.walk(folder_path):
+    for file in files:
+        for i in range(1, 100):
+            k = os.path.join(folder_path, ("report" + str(i) + ".txt"))
+            if os.path.exists(k):
+                continue
+            else:
+                open(k, 'a').close() #creates empy file with the name to cover the gap
+                print(k)
