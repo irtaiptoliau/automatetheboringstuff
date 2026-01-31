@@ -1,0 +1,31 @@
+#Chapter 20
+#Auto Unsubscriber
+#Write a program that scans your email account, finds all the unsubscribe links in all your emails, and automatically opens them in a browser. 
+
+#my solution below
+
+import imapclient
+import pyzmail
+from pprint import pprint
+import re
+import bs4
+import webbrowser
+
+obj = imapclient.IMAPClient('imap.gmail.com', ssl = True)
+x = input('Please input password ')
+obj.login('your@email.com', x)
+obj.select_folder('INBOX', readonly=True)
+ID = obj.search(['ALL'])
+k = []
+for i in range(len(ID)):
+    raw_message = obj.fetch(ID[i], ['BODY[]'])
+    message = pyzmail.PyzMessage.factory(raw_message[ID[i]][b'BODY[]'])
+    if message.text_part != None:
+        message = message.html_part.get_payload().decode(message.html_part.charset)
+        soup = bs4.BeautifulSoup(message, 'html.parser')
+        links = soup.select('a')
+        for link in links:
+            if 'quote' in link.text.lower():
+                url = link.get('href')
+                webbrowser.open(url)
+obj.logout()
