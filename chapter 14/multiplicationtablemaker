@@ -1,0 +1,28 @@
+#Chapter 14
+#Multiplication Table Maker
+#Create a program multiplicationTable.py that takes a number N from the command line and creates an N×N multiplication table in an Excel spreadsheet. 
+
+#my solution below
+
+import openpyxl
+from openpyxl.styles import Font
+from openpyxl.utils import get_column_letter
+wb = openpyxl.Workbook()
+sheet = wb.active
+font1 = Font(size=12, bold = True)
+
+#mains
+for i in range(1, 7):
+    sheet['A' + str(i+1)] = i
+    sheet['A' + str(i+1)].font = font1
+for i in range(1,8):
+    m = str(get_column_letter(i))
+    sheet[m + '1'] = sheet['A' + str(i)].value
+    sheet[m + '1'].font = font1
+
+#inside
+for i in range (2,8):
+    m = str(get_column_letter(i))
+    for x in range (2,8):
+        sheet[m + str(x)] = sheet[m + '1'].value * sheet['A' + str(x)].value
+wb.save('multiplicationTable.xlsx')
