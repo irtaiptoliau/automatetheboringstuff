@@ -1,0 +1,36 @@
+#Chapter 17
+#Custom Invitations
+#Write a program that generates a Word document with custom invitations based a file with the guest's names (see the full description in the book)
+
+#my solution below
+
+import docx
+from docx.enum.style import WD_STYLE
+from docx.enum.style import WD_STYLE_TYPE
+
+namesfile = open('path_to_names.txt', 'r')
+k = []
+with open('path_to_names.txt') as fp:
+    for x in fp.readlines():
+        if x.startswith('\ufeff'):
+            x = x.strip('\ufeff')
+            x = x.strip('\n')
+            k.append(x)
+        else:
+            k.append(x.strip('\n'))
+    lines = len(fp.readlines())
+numberofguests = lines
+fp.close()
+
+doc = docx.Document()
+
+styles  = doc.styles
+styles.add_style('Block quotation', WD_STYLE_TYPE.PARAGRAPH)
+
+for item in k:
+    par1 = doc.add_paragraph("Dear " + item + "!", 'Title')
+    par2 = doc.add_paragraph("Please join us as we celebrate our store's soft opening on Nov. 20 at noon.", 'Subtitle')
+    par3 = doc.add_paragraph("We plan to provide light snacks and drinks. Please RSVP to confirm your attendance.", 'Block quotation')
+    doc.add_page_break()
+
+doc.save('path_to_invitations.docx')
