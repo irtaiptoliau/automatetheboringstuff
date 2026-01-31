@@ -1,0 +1,19 @@
+#Chapter 15
+#Finding Mistakes in a Spreadsheet
+#Write a function that takes a list value as an argument and returns a string with all the items separated by a comma and a space, with and inserted before the last item. 
+
+#my solution below
+
+import ezsheets
+
+ss = ezsheets.Spreadsheet('xxxx')
+sheet = ss[0]
+n = 2
+while not sheet['A' + str(n)] == '':
+    k = int(sheet['A' + str(n)]) * int(sheet['B' + str(n)])
+    if k == int(sheet['C' + str(n)]):
+        continue
+    else:
+        print('A mistake is found in row %s values %s %s %s' % (n, sheet['A' + str(n)], sheet['B' + str(n), sheet['C' + str(n)]]))
+    n += 1    
+print('Done')
