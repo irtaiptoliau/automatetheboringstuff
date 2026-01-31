@@ -1,0 +1,13 @@
+#Chapter 11
+#Deleting Unneeded Files
+#Write a program that walks through a folder tree and searches for exceptionally large files (more than 100MB) or folders, and deletes them.
+
+#my solution below
+
+import os
+
+for root, dirs, files in os.walk("path_to_folder"):
+    for file in files:
+        if os.path.getsize(os.path.join(root, file)) > 100 * 1024 * 1024:
+            print(os.path.join(root, file))
+            os.remove(os.path.join(root, file))
