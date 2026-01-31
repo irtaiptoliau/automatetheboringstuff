@@ -1,0 +1,31 @@
+#Chapter 18
+#Excel-to-CSV Converter
+#Write a program that reads all the Excel files in the current working directory and outputs them as CSV files
+
+#my solution below
+
+from pathlib import Path
+import openpyxl, csv, os, fnmatch
+
+folder = Path('path_to_folder')
+
+for file in os.listdir(folder):
+    if file.endswith('.xlsx'):
+        filepath = Path(os.path.join(folder, file))
+        
+        xlsx_file = openpyxl.load_workbook(filepath) #open each file xlsx
+        for item in xlsx_file.sheetnames: #work with each sheet inside the file
+              sheet = xlsx_file[item]
+
+              if len(xlsx_file.sheetnames) == 1:
+                  path = filepath.with_name(filepath.stem + '_csv_from_xlsx' + '.csv') #rename
+              else:
+                  path = filepath.with_name(filepath.stem + '_' + str(item) + '_csv_from_xlsx' + '.csv')
+                  
+              newfile = open(path, 'w', newline='')
+              write = csv.writer(newfile)
+             
+              for k in sheet.iter_rows(min_row=1, values_only=True):
+                  write.writerow(k)
+              newfile.close()
+          
