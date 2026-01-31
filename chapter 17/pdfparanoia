@@ -1,0 +1,31 @@
+#Chapter 17
+#PDF Paranoia
+#Write a script that will go through every PDF in a folder and its subfolders and encrypt the PDFs using a password provided on the command line. 
+
+#my solution below
+
+import PyPDF2
+from pathlib import Path
+import os
+import fnmatch
+
+p = Path('path/to/file') 
+k = []
+
+for dirpath, dirs, files in os.walk(p):
+    for filename in fnmatch.filter(files, '*.pdf'):
+        k.append(os.path.join(dirpath, filename))
+        
+for x in k:
+    path1 = Path(x)
+    pdf_file = open(path1, 'rb')
+    pdfReader = PyPDF2.PdfFileReader(pdf_file)
+    pdfWriter = PyPDF2.PdfFileWriter()
+    for pagenum in range(pdfReader.numPages):
+        pdfWriter.addPage(pdfReader.getPage(pagenum))
+    pdfWriter.encrypt('kate')
+                          
+    path2 = path1.with_name(path1.stem + '_encrypted'+ path1.suffix) #rename                      
+    newfile = open(path2, 'wb')
+    pdfWriter.write(newfile)
+    newfile.close()
